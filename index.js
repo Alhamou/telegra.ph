@@ -1,20 +1,20 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
-import {upload} from './telegraph.js'
 
 const app = express()
 app.use(fileUpload())
 
 
+import {upload} from './telegraph.js'
 
 
 app.post("/", async (req, res, next)=>{
 
-    const upload = await upload(req.files.images)
+    const result = await upload(req.files.images)
 
-    console.log(upload)
+    console.log(result)
 
-    res.send(upload)
+    res.send(result)
 })
 
 
