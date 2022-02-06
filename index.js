@@ -1,11 +1,11 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
+import {upload} from './telegraph.js'
 
 const app = express()
 app.use(fileUpload())
 
 
-import {upload} from './telegraph.js'
 
 
 app.post("/", async (req, res, next)=>{
