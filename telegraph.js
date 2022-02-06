@@ -25,7 +25,7 @@ export const upload = function(buffer){
 
           const results = []
 
-          images.forEach(async (image, i) => {
+          images.forEach(async image => {
 
               const {name, data, size, type} = image
 
@@ -35,11 +35,18 @@ export const upload = function(buffer){
 
               const result = await uploadByBuffer(data, name)
 
+              if(result.error){
+
+                throw result.error
+              }
+
+
               results.push(result[0])
 
               if(buffer.length === results.length){
                   resolve(results)
               }
+
           })
 
       }catch(error){
