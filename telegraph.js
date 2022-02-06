@@ -1,8 +1,8 @@
 import fetch, {File, FormData} from 'node-fetch'
 
-const uploadByBuffer = async (buffer) => {
+const uploadByBuffer = async (buffer, name) => {
 
-    const file = new File([buffer], "img")
+    const file = new File([buffer], name)
 
     const form = new FormData()
 
@@ -33,7 +33,7 @@ export const upload = function(buffer){
                   throw "File not Buffer"
               }
 
-              const result = await uploadByBuffer(data)
+              const result = await uploadByBuffer(data, name)
 
               results.push(result[0])
 
